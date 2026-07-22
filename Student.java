@@ -1,22 +1,103 @@
 // CSC156 - Java Computer Science 1
 // Members: Juan Figueroa, Myat Min Htoo, Nicholas Korsak
 
-// This class represents a single student
-// for now each student could have fields like name, id, and a list of their grades
+// This class represents a single student.
+// Each student has a name, student ID, and an array of grades.
 
 public class Student {
 
-    // we could have variables here to store the student's name, id, and grades and any other variables we want to add
-    // grades could be stored in an array of doubles
+    // Student information
+    private String name;
+    private int studentID;
+    private double[] grades;
 
-    // the constructor would go here, it could the variables as parameters
+    // Constructor
+    public Student(String name, int studentID, double[] grades) {
+        this.name = name;
+        this.studentID = studentID;
+        this.grades = grades;
+    }
 
-    // we would also need getters so other classes can access the fields
+    // Getters
+    public String getName() {
+        return name;
+    }
 
-    // possible method that could use a for loop to add up all the grades and return the average
+    public int getStudentID() {
+        return studentID;
+    }
 
-    // possible method that could use if/else to check the average and return the right letter grade (A, B, C, D, or F)
+    public double[] getGrades() {
+        return grades;
+    }
 
-    // possible method to return something like a formatted string showing the student's name, id, average, and letter grade
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
+    public void setGrades(double[] grades) {
+        this.grades = grades;
+    }
+
+    // Calculates and returns the student's average grade
+    public double calculateAverage() {
+
+        if (grades == null || grades.length == 0) {
+            return 0;
+        }
+
+        double total = 0;
+
+        for (int i = 0; i < grades.length; i++) {
+            total += grades[i];
+        }
+
+        return total / grades.length;
+    }
+
+    // Determines the student's letter grade
+    public String getLetterGrade() {
+
+        double average = calculateAverage();
+
+        if (average >= 90) {
+            return "A";
+        } else if (average >= 80) {
+            return "B";
+        } else if (average >= 70) {
+            return "C";
+        } else if (average >= 60) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+
+    // Displays all student information
+    public void displayStudent() {
+
+        System.out.println("----------------------------");
+        System.out.println("Student Name: " + name);
+        System.out.println("Student ID: " + studentID);
+
+        System.out.print("Grades: ");
+
+        for (int i = 0; i < grades.length; i++) {
+            System.out.print(grades[i]);
+
+            if (i < grades.length - 1) {
+                System.out.print(", ");
+            }
+        }
+
+        System.out.println();
+        System.out.printf("Average: %.2f%n", calculateAverage());
+        System.out.println("Letter Grade: " + getLetterGrade());
+        System.out.println("----------------------------");
+    }
 }
