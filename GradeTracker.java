@@ -188,4 +188,21 @@ public class GradeTracker {
         System.out.println("Top Student:");
         top.displayStudent();
     }
+
+    // Myat: calculates the average GPA for all students in class
+    public static void displayClassGPA() {
+        if (students.isEmpty()) {
+            System.out.println("No students on record.");
+            return;
+        }
+
+        double total = 0.0;
+
+        for (Student student : students) {
+            total += student.getGPA();
+        }
+
+        double classGPA =  total / students.size();
+        System.out.printf("Class GPA: %.2f%n", classGPA);
+    }
 }

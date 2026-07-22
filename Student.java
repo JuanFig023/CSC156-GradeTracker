@@ -60,6 +60,41 @@ public class Student {
         return total / grades.length;
     }
 
+    // Finds the highest grade of a student
+    public double getHighestGrade() {
+
+        if (grades == null || grades.length == 0) {
+            return 0;
+        }
+
+        double highest = grades[0];
+
+        for (int i = 1; i < grades.length; i++) {
+            if (grades[i] > highest) {
+                highest = grades[i];
+            }
+        }
+
+        return highest;
+    }
+
+    // Finds the lowest grade of a student
+    public double getLowestGrade() {
+        if (grades == null || grades.length == 0) {
+            return 0;
+        }
+
+        double lowest = grades[0];
+
+        for (int i = 1; i < grades.length; i++) {
+            if (grades[i] < lowest) {
+                lowest = grades[i];
+            }
+        }
+
+        return lowest;
+    }
+
     // Determines the student's letter grade
     public String getLetterGrade() {
 
@@ -77,6 +112,26 @@ public class Student {
             return "F";
         }
     }
+
+    // Display GPA grade point from the alphabetical GPA
+    public double getGPA() {
+
+        String letter = getLetterGrade();
+
+        switch (letter) {
+            case "A":
+                return 4.0;
+            case "B":
+                return 3.0;
+            case "C":
+                return 2.0;
+            case  "D":
+                return 1.0;
+            default:
+                return 0.0;
+        }
+    }
+
 
     // Displays all student information
     public void displayStudent() {
@@ -98,6 +153,9 @@ public class Student {
         System.out.println();
         System.out.printf("Average: %.2f%n", calculateAverage());
         System.out.println("Letter Grade: " + getLetterGrade());
+        System.out.println("GPA: " + getGPA());
+        System.out.println("Highest Grade: " +  getHighestGrade());
+        System.out.println("Lowest Grade: " +  getLowestGrade());
         System.out.println("----------------------------");
     }
 }
