@@ -38,10 +38,12 @@ public class GradeTracker {
             } else if (choice == 6) {
                 displayTopStudent();
             } else if (choice == 7) {
+                displayClassGPA();
+            } else if (choice == 8) {
                 System.out.println("Goodbye!");
                 running = false;
             } else {
-                System.out.println("Invalid choice. Please try again.");
+                System.out.println("Wrong choice! Please try again.");
             }
         }
 
@@ -58,7 +60,8 @@ public class GradeTracker {
         System.out.println("4. Remove Student by ID");
         System.out.println("5. View Class Average");
         System.out.println("6. View Top Student");
-        System.out.println("7. Exit");
+        System.out.println("7. View Class GPA");
+        System.out.println("8. Exit");
     }
 
     // Juan: asks the user for a name, id, and grades, then creates a Student and adds it to the list
