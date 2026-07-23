@@ -39,6 +39,8 @@ public class GradeTracker {
                 displayTopStudent();
             } else if (choice == 7) {
                 displayClassGPA();
+            } else if (choice == 9) {
+                updateStudentGrades();   // Robina
             } else if (choice == 8) {
                 System.out.println("Goodbye!");
                 running = false;
@@ -62,6 +64,8 @@ public class GradeTracker {
         System.out.println("6. View Top Student");
         System.out.println("7. View Class GPA");
         System.out.println("8. Exit");
+        System.out.println("9. Update Student Grades");   // Robina 
+
     }
 
     // Juan: asks the user for a name, id, and grades, then creates a Student and adds it to the list
@@ -208,4 +212,39 @@ public class GradeTracker {
         double classGPA =  total / students.size();
         System.out.printf("Class GPA: %.2f%n", classGPA);
     }
+
+       // Robina: updates a student's grades by ID
+      public static void updateStudentGrades() {
+
+    System.out.print("Enter student ID to update: ");
+    int id = input.nextInt();
+    input.nextLine();
+
+    Student target = null;
+
+    for (Student s : students) {
+        if (s.getStudentID() == id) {
+            target = s;
+            break;
+        }
+    }
+
+    if (target == null) {
+        System.out.println("No student found with that ID.");
+        return;
+    }
+
+    System.out.print("Enter number of new grades: ");
+    int num = input.nextInt();
+    double[] newGrades = new double[num];
+
+    for (int i = 0; i < num; i++) {
+        System.out.print("Enter grade " + (i + 1) + ": ");
+        newGrades[i] = input.nextDouble();
+    }
+    input.nextLine();
+
+    target.setGrades(newGrades);
+    System.out.println("Grades updated successfully.");
+}
 }
