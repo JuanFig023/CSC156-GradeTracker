@@ -214,7 +214,7 @@ public class GradeTracker {
     }
 
        // Robina: updates a student's grades by ID
-public static void updateStudentGrades() {
+      public static void updateStudentGrades() {
 
     System.out.print("Enter student ID to update: ");
     int id = input.nextInt();
@@ -246,4 +246,5 @@ public static void updateStudentGrades() {
 
     target.setGrades(newGrades);
     System.out.println("Grades updated successfully.");
+}
 }
